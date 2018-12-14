@@ -1,0 +1,1 @@
+Does not include: bot token, which should be stored as a constant named Token a separate go file in the "bot" package. 
