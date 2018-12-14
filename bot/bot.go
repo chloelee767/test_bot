@@ -13,11 +13,6 @@ type TestBot struct {
 
 type CommandFn func(*TestBot, *tgbotapi.Message) error
 
-type Command struct {
-	Str string
-	Fn  CommandFn
-}
-
 type botConfig struct {
 	Token string
 }
@@ -36,8 +31,8 @@ func New() (TestBot, error) {
 	return bot, nil
 }
 
-func (tb *TestBot) AddCommand(cmd Command) {
-	tb.CommandsMap[cmd.Str] = cmd.Fn
+func (tb *TestBot) AddCommand(str string, fn CommandFn) {
+	tb.CommandsMap[str] = fn
 }
 
 func (tb *TestBot) Start(updateFreq int) {
